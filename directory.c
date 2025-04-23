@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-struct Directory *openDir(Ext2File *f, uint32_t iNum) {
+struct Directory *openDir(struct Ext2File *f, uint32_t iNum) {
     struct Directory *d = malloc(sizeof(struct Directory));
     if (!d) return NULL;
 
