@@ -13,16 +13,11 @@
 ##### • The file name, as an array of characters.
 #### The following structure can (should?) be used:
 ##### struct Dirent {
-##### uint32_t
-##### iNum;
-##### uint16_t
-##### recLen;
-##### uint8_t
-##### nameLen,
-##### fileType,
-##### name[1];
+##### uint32_t iNum;
+##### uint16_t recLen;
+##### uint8_t nameLen, fileType, name[1];
 ##### };
-##### Note that the name array only has one byte; C and C++ don’t check array bounds, so it is safe to point this structure to the start of a directory entry and copyn  m e L e nbytes from the name array. Also note that a directory entry will never span two blocks; an insufficiently large space at the end of a block is usually absorbed into the last entry as extra padding after the name; the recLen field is increased to incorporate the additional space.
+##### Note that the name array only has one byte; C and C++ don’t check array bounds, so it is safe to point this structure to the start of a directory entry and copy nameLen bytes from the name array. Also note that a directory entry will never span two blocks; an insufficiently large space at the end of a block is usually absorbed into the last entry as extra padding after the name; the recLen field is increased to incorporate the additional space.
 #### Directory functions
 ##### Four functions are necessary at a minimum for reading a directory:
 ###### • struct Directory *openDir(uint32_t iNum)
